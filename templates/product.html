@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css'>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+ul {
+    list-style: none;
+}
+  
+.accordion-menu {
+    max-width: 250px;
+    /* margin: 100px auto 20px; */
+    background: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #000;
+    margin-left: -120px;
+    margin-top: -480px;
+    /* max-height: 700px; */
+    height: 500px;
+}
+
+.accordion-menu li:last-child .dropdown {
+    border-bottom: 0;
+}
+.accordion-menu li.active .dropdown {
+    color: #fff;
+}
+.accordion-menu li.active .dropdown  .fa-chevron-down {
+    transform: rotate(180deg);
+}
+.dropdown {
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 45px;
+    font-size: 18px;
+    border-bottom: 2px solid gold;
+    text-align: center;
+    color: grey;
+    position: relative;
+    line-height: 60px;
+    transition: all 0.4s ease-out;
+}
+
+.dropdown:hover{
+    background: grey; /* fallback colour */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(black), to(black));
+}
+  
+.dropdown  i {
+    position: absolute;
+    top: 17px;
+    left: 16px;
+}
+
+.dropdown .fa-chevron-down {
+    right: 12px;
+    left: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.submenuItems {
+    display: none;
+    background: black;
+    transition: all 2s ease-in-out;
+}
+
+.accordion-menu li.active .submenuItems{
+    display: block;
+}
+
+.submenuItems a {
+    display: block;
+    color: grey;
+    font-weight: 600;
+    padding: 12px 12px 12px 45px;
+    transition: all 0.2s ease-out;
+    text-decoration: none;
+    margin-left: 45px;
+}
+
+.submenuItems a:hover {
+    background-color: black;
+    color: gold;
+  }
+  .Container_Image{
+    width: 1000px;
+    /* float: right; */
+    height: 500px;
+    margin-top: -22px;
+  }
+  .Container_Image img{
+    width: 1400px;
+    margin-left: 140px;
+    border-radius: 10px;
+    margin-top: 17px;
+    height: 500px;
+
+  }
+    </style>
+</head>
+<body>
+  <!-- First Navbar -->
+    <div class="navbar-expand-lg">
+        <div class="sub_container">
+          <!-- <span class="text first-text">Hello,</span> -->
+          <span class="text sec-text"></span>
+  <!-- First Navbar Ending -->
+
+
+        </div>
+
+    <!--Second  Navbar Starting -->
+    <div class="Navbar_Header">
+      <div class="Navbar_Contents">
+        <ul>
+          <li><a href="#"><img src="{%static 'image/Screenshot (85).png' %}" alt=""></a></li>
+          <div class="Navbar_Content1">
+          <li><a href="{% url 'Index' %}">Home</a></li>
+          <li><a href="{% url 'Product1' %}">Product</a></li>
+          <li><a href="{% url 'About' %}">About</a></li>
+          <li><a href="{% url 'Contact' %}">Contact</a></li>
+          <div class="nav_image">
+          <li><img src="{% static 'image/decorator1-removebg-preview.png' %}" alt=""></li>
+          <li><div class="nav-line"></div></li>
+          <li><img src="{% static 'image/decorator1-removebg-preview.png' %}" alt=""></li>
+        </div>
+        </div>
+        </ul>
+      </div>
+    </div>
+    <!--Second Navbar Ending -->
+
+    <!-- Third Navbar Starting -->
+    
+    <div class="navbar-expand-lg">
+      <div class="sub_container2">
+          <form action="">
+            <input type="text" placeholder="What you are looking for?">
+            <button type="submit">Search</button>
+          </form>
+          <ul>
+            <li><div class="nav_line2"></div></li>
+            <li><div class="nav_img2"><img src="{% static 'image/decorator1-removebg-preview.png' %}" alt=""></div></li>
+            <div class="icons"></div>
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'Logout' %}"><span class="material-symbols-outlined">
+              logout
+              </span></a></li>
+              {% else %}
+            <li><a href="{% url 'Login' %}"><span class="material-symbols-outlined">
+              login
+              </span></a></li>
+              {% endif %}
+
+            <li><a href=""><span class="material-symbols-outlined">
+              favorite
+              </span></a></li>
+            <li><a href="{% url 'cart_detail' %}"><span class="material-symbols-outlined">
+              shopping_cart
+              </span></a></li>
+            </div>
+          </ul>
+      </div>
+</div><br>
+
+<!-- Third Navbar Ending -->
+
+<!-- Side Bar Starting -->
+<div class="container">
+  {% block content %}
+    <div class="Container_Image">
+    <img src="/static/image/Red Creative Sale Promo Banner.png" alt="">
+</div>
+{% endblock %}
+    <ul class="accordion-menu">
+        <li class="link">
+            <div class="dropdown">
+                <i class="fa-sharp fa-regular fa-gem"></i>
+                JEWELLERY
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+                <li><a href="{% url 'Diamond' %}">Diamond</a></li>
+                <li><a href="{% url 'Gold' %}">Gold</a></li>
+                <li><a href="{% url 'Silver' %}">Silver</a></li>
+            </ul>
+        </li>
+        <li class="link">
+            <div class="dropdown">
+              <i class="fa-sharp fa-solid fa-shirt"></i> 
+                DRESS
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+                <li><a href="{% url 'MensDress' %}">Mens</a></li>
+                <li><a href="{% url 'WomensDress' %}">Womens</a></li>
+                <li><a href="{% url 'KidsDress' %}">Kids</a></li>
+            </ul>
+        </li>
+        <li class="link">
+            <div class="dropdown">
+              <i class="fa-sharp fa-solid fa-headphones"></i>
+                ACCESSORIES
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+                <li><a href="{% url 'MensAccessories' %}">Mens</a></li>
+                <li><a href="{% url 'WomensAccessories' %}">Womens</a></li>
+                <li><a href="{% url 'KidsAccessories' %}">Kids</a></li>
+            </ul>
+        </li>
+        <li class="link">
+            <div class="dropdown">
+              <i class="fa-sharp fa-solid fa-handshake-simple"></i>
+                WEDDING COMBO
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <ul class="submenuItems">
+                <li><a href="{% url 'Bride' %}">Bride</a></li>
+                <li><a href="{% url 'Groom' %}">Groom</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!-- Side Bar Ending -->
+
+
+<script>
+    const text = document.querySelector(".sec-text");
+    
+    const textLoad = () => {
+      setTimeout(() => {
+        text.textContent ="Welcome To AK-FASHION";
+      }, 0);
+      setTimeout(() => {
+        text.textContent ="Make Your Life Styish Than Ever";
+      }, 4000);
+      setTimeout(() => {
+        text.textContent ="Wear Them With Pride";
+      }, 8000);
+      setTimeout(() => {
+        text.textContent ="Let Your Desire Meet Style";
+      }, 12000);
+    }
+        textLoad();
+  </script>
+  
+  <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'></script>
+  <script>
+      $(document).ready(function () {
+  $("#news-slider").owlCarousel({
+  items: 3,
+  itemsDesktop: [1199, 3],
+  itemsDesktopSmall: [980, 2],
+  itemsMobile: [600, 1],
+  navigation: true,
+  navigationText: ["", ""],
+  pagination: true,
+  autoPlay: true });
+  
+  });
+  </script>
+
+  <script>
+    let listElements = document.querySelectorAll('.link');
+  
+  listElements.forEach(listElement => {
+      listElement.addEventListener('click', ()=>{
+          if (listElement.classList.contains('active')){
+              listElement.classList.remove('active');
+          }else{
+              listElements.forEach (listE => {
+                  listE.classList.remove('active');
+              })
+              listElement.classList.toggle('active');
+          }
+      })
+  });
+  </script>
+</body>
+</html>

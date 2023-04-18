@@ -1,0 +1,99 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load cart_tag %}
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
+
+<h1 style="text-align: center; font-weight: 600;">Shopping Cart</h1>
+<section class="h-100" style="background:linear-gradient(135deg,gold,rgb(143, 3, 63));">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+          <div>
+            <!-- <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i -->
+                  <!-- class="fas fa-angle-down mt-1"></i></a></p> -->
+          </div>
+        </div>
+        {% for key,value in request.session.cart.items %}
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="{{value.image}}"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">{{value.name}}</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+             <div class="cart_quantity" style="margin-left: 300px;">
+              <div class="cart_quantity_button">
+                <a href="{% url 'item_increment' value.product_id %}" class="cart_quantity_up">+</a>
+                  <input class="cart-plus-minus-box" type="text" name="qtybutton" style="width:40px" value="{{value.quantity}}"/>
+                  <a class="cart_quantity_down" href="{% url 'item_decrement' value.product_id %}">-</a>
+              </div>
+             </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0" style="margin-left: -100px;">₹{{value.price}} </h5>
+                <h5 class="mb-0" style="float: right;margin-top: -50px;"> Total: <span style="display: block;">₹{{ value.price|multiply:value.quantity }}</span></h5>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">{{value.quantity}}</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="{% url 'item_clear' key %}" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="card">
+          <div class="card-body" style="margin-left: 45%;">
+            <a id="rzp-button1" class="btn btn-warning">Place Order</a>
+            <!-- <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Section -->
+<form action="{% url 'Success' %}" method="post">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_9tCOZuKLhiZdaM",
+    "amount": "50000",
+    "currency": "INR",
+    "name": "Acme Corp", 
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}",
+    "callback_url": "http://127.0.0.1:8000/Success",
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+</form>
+<!-- Payment Section End -->
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+from django.urls import path
+from .import views
+
+urlpatterns = [
+    path("",views.Index,name="Index"),
+    path("Product1",views.Product1,name="Product1"),
+    path("About",views.About,name="About"),
+    path("Contact",views.Contact,name="Contact"),
+    path("Diamond",views.Diamond,name="Diamond"),
+    path("Gold",views.Gold,name="Gold"),
+    path("Silver",views.Silver,name="Silver"),
+    path("MensDress",views.MensDress,name="MensDress"),
+    path("WomensDress",views.WomensDress,name="WomensDress"),
+    path("KidsDress",views.KidsDress,name="KidsDress"),
+    path("MensAccessories",views.MensAccessories,name="MensAccessories"),
+    path("WomensAccessories",views.WomensAccessories,name="WomensAccessories"),
+    path("KidsAccessories",views.KidsAccessories,name="KidsAccessories"),
+    path("Bride",views.Bride,name="Bride"),
+    path("Groom",views.Groom,name="Groom"),
+    path("ProductView/<int:pk>/",views.ProductView,name="ProductView"),
+    path("search/",views.SEARCH,name="search"),
+    path("register",views.Register,name="register"),
+    path("Login",views.Login,name="Login"),
+    path("Logout",views.Logout,name="Logout"),
+    #cart
+    path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
+    path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
+    path('cart/item_increment/<int:id>/',
+         views.item_increment, name='item_increment'),
+    path('cart/item_decrement/<int:id>/',
+         views.item_decrement, name='item_decrement'),
+    path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
+    path('cart/cart-detail/',views.cart_detail,name='cart_detail'),
+    path("checkout",views.checkout,name="checkout"),
+    path("PlaceOrder",views.PlaceOrder,name="PlaceOrder"),
+    path("Success",views.Success,name="Success"),
+]

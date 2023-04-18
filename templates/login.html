@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+    .container{
+      width: 400px;
+      height: 350px;
+      border: none;
+      box-shadow: 2px 2px 3px black;
+      margin: auto;
+      background:linear-gradient(135deg,gold,rgb(143, 3, 63));
+    }
+    .Login_Title{
+      text-align: center;
+      color: black;
+      font-weight: 500;
+      margin-top: 30px;
+    }
+    .container form{
+      margin-left: 60px;
+    }
+    .container input{
+      width: 80%;
+      height: 40px;
+    }
+    .container button{
+      margin-left: 110px;
+      height: 40px;
+      width: 60px;
+      border-radius: 10px;
+      border: .1px solid black;
+    }
+    .container input:hover{
+      background-color: rgb(167, 162, 162);
+    }
+    .container button:hover{
+      background-color: gold;
+    }
+  </style>
+
+  <div class="container">
+    <h1 class="Login_Title">Login</h1><br><br>
+    <form action="{% url 'Login' %}" method="post"> 
+      {% csrf_token %}
+      <input type="text" placeholder="Enter Your Name" name="username"><br><br>
+      <input type="text" placeholder="Enter Your Password" name="password"><br><br>
+      <button type="submit">SignIn</button>
+    </form>
+    <a href="{% url 'register' %}">Already Have An Account</a>
+  </div>
+{% endblock %}
